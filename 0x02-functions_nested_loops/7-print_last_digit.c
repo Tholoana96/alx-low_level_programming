@@ -5,8 +5,8 @@
  * @a: the int value to be acted upon
  * author: sammykingx
  * Return: returns the last digit to calling function
-
 */
+
 int print_last_digit(int n)
 {
 	int last;
