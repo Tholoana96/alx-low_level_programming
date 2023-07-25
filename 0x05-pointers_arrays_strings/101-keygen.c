@@ -1,32 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
 
 /**
- *main- generate random password for program
+ * main - Generates random valid passwords for the
+ *        program 101-crackme.
  *
- * Return: 0 success
+ * Return: Always 0.
  */
+int main(void)
+{
+	char password[84];
+	int index = 0, sum = 0, diff_half1, diff_half2;
 
-void generate_password(int length, char* password) {
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?";
-    int charset_length = strlen(charset);
+	srand(time(0));
 
-    srand(time(NULL));
-    for (int i = 0; i < length - 1; i++) {
-        password[i] = charset[rand() % charset_length];
-    }
-    password[length - 1] = '\0';
+	while (sum < 2772)
+	{
+		password[index] = 33 + rand() % 94;
+		sum += password[index++];
+	}
+
+	password[index] = '\0';
+
+	if (sum != 2772)
+	{
+		diff_half1 = (sum - 2772) / 2;
+		diff_half2 = (sum - 2772) / 2;
+		if ((sum - 2772) % 2 != 0)
+			diff_half1++;
+
+		for (index = 0; password[index]; index++)
+		{
+			if (password[index] >= (33 + diff_half1))
+			{
+				password[index] -= diff_half1;
+				break;
+			}
+		}
+		for (index = 0; password[index]; index++)
+		{
+			if (password[index] >= (33 + diff_half2))
+			{
+				password[index] -= diff_half2;
+				break;
+			}
+		}
+	}
+
+	printf("%s", password);
+
+	return (0);
 }
-
-int main() {
-    int password_length = 12; // Change this to the desired password length
-    char random_password[password_length];
-    
-    generate_password(password_length, random_password);
-    printf("Random password: %s\n", random_password);
-    
-    return 0;
-}
-
