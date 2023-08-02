@@ -3,7 +3,7 @@
 /**
  * helper - does it for me
  * @i: helper int
- * @n: integer 
+ * @n: integer
  * Return: value
  */
 
