@@ -1,1 +1,1 @@
-This folder is focused on working with arguments on main.
+This folder will contain all the work I have done so far on C language programming.
