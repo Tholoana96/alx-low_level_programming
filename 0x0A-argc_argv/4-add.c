@@ -1,49 +1,61 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 
 /**
- *main - add two numbers
- *@argc: arugment count
- *@argv: argument vectors
- *
- * Return: 0 no errors, else 1
+ * StringCheck - checks string
+ * @s: string to check
+ * Return: boolean
  */
 
-int main(int argc, char *argv[])
+int StringCheck(char *s)
 {
-	if (argc == 1)
-	{
-		printf("0\n");
-		return (0);
-	}
+	int i = 0;
 
-	int total = 0;
-
-	for (int i = 1; i < argc; i++)
+	for (; s[i] != '\0'; i++)
 	{
-	char *arg = argv[i];
-
-	for (int j = 0; arg[j] != '\0'; j++)
-	{
-		if (!isdigit(arg[j]))
+		if (!isdigit(s[i]))
 		{
-			printf("Error\n");
-			return (1);
+			return (0);
 		}
 	}
+	return (1);
+}
 
-	int num = atoi(arg);
+/**
+ * main - main function
+ * @argc: argumentc
+ * @argv: vector of arguments
+ *Return: always 0
+ */
 
-	if (num < 0)
+int main(int argc, char  *argv[])
+{
+	int i;
+	int result = 0;
+
+	if (argc > 1)
 	{
-		printf("Error\n");
+		for (i = 1; i < argc; i++)
+		{
+			if (StringCheck(argv[i]))
+			{
+				result += atoi(argv[i]);
+			}
+			else
+			{
+				printf("Error\n");
+				return (1);
+			}
+		}
+		printf("%d\n", result);
+		return (0);
+	}
+	else
+	{
+		printf("%d\n", 0);
 		return (1);
 	}
 
-	total += num;
-	}
-
-	printf("%d\n", total);
-	return (0);
 }
