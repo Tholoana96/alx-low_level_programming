@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 /**
- * print-numbers - prnints numbers
- * @seperator: string to be printed
+ * print_numbers - prints numbers
+ * @separator: string to be printed
  * @n: number of integars passed to funtion
  */
 
