@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 /**
  * start_function - Apply the constructor attribute to start_function() so that
