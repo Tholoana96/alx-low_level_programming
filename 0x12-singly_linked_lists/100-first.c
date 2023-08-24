@@ -1,8 +1,8 @@
 #include<stdio.h>
 
 /**
- * start_function - Apply the constructor attribute to start_function() so that it
- *   is executed before main()
+ * start_function - Apply the constructor attribute to start_function() so that
+ * it is executed before main()
  */
 
 void start_function(void) __attribute__ ((constructor));
